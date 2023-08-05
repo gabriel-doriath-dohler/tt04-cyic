@@ -73,7 +73,9 @@ if __name__ == "__main__":
     v = verilog.convert(
         top, name="tt_um_sup3legacy_trng", ports=top.ports(),
         emit_src=False, strip_internal_attrs=True)
-    with open("../src/top.v", 'w') as file:
-        file.write(v)
+
+    # NOTE: Currently not used because we directly write the Verilog
+    #with open("../src/top.v", 'w') as file:
+    #    file.write(v)
     test()
     #print(v)
