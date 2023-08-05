@@ -14,7 +14,7 @@ module vector_buffer
 
     input req,
     output [7:0] vector,
-    output valid,
+    output reg valid,
 
 );
   // The actual ring buffer
@@ -53,10 +53,25 @@ module vector_buffer
               prod = prof + 1;
         end
     end
-
-    // TODO: consumer
   end
 
-  // If no request or no data to send, output 0
-  assign vector = buffer[0];
+  always @(posedge clk) begin
+    if (req) begin
+        if (!is_empty) begin
+            vector = buffer[cons]; 
+            valid = 1;
+            cons = cons + 1;
+        end
+        else begin
+            vector = 0;
+            valid = 0;
+        end
+        // Have we emptied the ring buffer?
+        is_empty = (cons == prod);
+    end
+    else begin
+        vector = 0;
+        valid = 0;
+    end
+  end
 endmodule
