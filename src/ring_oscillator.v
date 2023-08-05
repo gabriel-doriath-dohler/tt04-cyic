@@ -9,23 +9,22 @@ module ring_oscillator (
   wire n3;
   wire n4;
   wire n5;
-  wire n6;
 
-  assign n1 = !n0;
-  assign n2 = !n1;
-  assign n3 = !n2;
-  assign n4 = !n3;
-  assign n5 = !n4;
-  assign n6 = !n5;
-  assign n0 = !n6;
+  //assign n1 = !n0;
+  //assign n2 = !n1;
+  //assign n3 = !n2;
+  //assign n4 = !n3;
+  //assign n5 = !n4;
+  //assign n6 = !n5;
+  //assign n0 = !n6;
 
-  initial begin
-      enabled = 0;
-  end
+  not (n1, n0);
+  not (n2, n1);
+  not (n3, n2);
+  not (n4, n3);
+  not (n5, n4);
 
-  always @ (posedge enable) begin
-      enabled = 1;
-  end
+  assign n0 = enable ? n5 : 0;
 
   //sky130_fd_sc_hd__inv_2 nand0 (.Y(n1), .A(n0));
   //sky130_fd_sc_hd__inv_2 nand1 (.Y(n2), .A(n1));
@@ -35,5 +34,5 @@ module ring_oscillator (
   //sky130_fd_sc_hd__inv_2 nand5 (.Y(n6), .A(n5));
   //sky130_fd_sc_hd__inv_2 nand6 (.Y(n0), .A(n6));
 
-  assign entropy_bit = n0 & enabled;
+  assign entropy_bit = n0;
 endmodule
