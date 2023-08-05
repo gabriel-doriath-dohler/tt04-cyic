@@ -47,12 +47,12 @@ def test():
     ctr = Top()
 
     def testbench():
-        yield ctr.io_in.eq(0)
+        yield ctr.ui_in.eq(0)
         # Collect 22 output bits
         out = []
         yield
         for _ in range(22):
-            out.append((yield ctr.io_out))
+            out.append((yield ctr.uo_out))
             yield
         assert out == [
             0,1,3,2,6,7,5,4,12,13,15,14,10,11,9,8,24,25,27,26,30,31]
@@ -71,10 +71,9 @@ if __name__ == "__main__":
     # Generate Verilog source for GC4.
     top = Top()
     v = verilog.convert(
-        top, name="tt_um_sup3legacy_trng", ports=[top.ui_in, top.uo_out, top.uio_in,
-                                            top.uio_out, top.uio_oe, top.clk,
-                                            top.ena, top.rst_n],
+        top, name="tt_um_sup3legacy_trng", ports=top.ports(),
         emit_src=False, strip_internal_attrs=True)
     with open("../src/top.v", 'w') as file:
         file.write(v)
-    print(v)
+    test()
+    #print(v)

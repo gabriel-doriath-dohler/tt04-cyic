@@ -20,7 +20,7 @@ yaml_version: 4
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
-  author:       "Gabriel Doriath-Döhler, Constantin Gierczak--Galle"      # Your name
+  author:       "Gabriel Doriath Döhler, Constantin Gierczak--Galle"      # Your name
   title:        "RISC-V compliant TRNG"      # Project title
   language:     "Amaranth" # other examples include Verilog, Amaranth, VHDL, etc
   description:  "A tweak 8-bit version of the entropy source RISC-V extension."      # Short description of what your project does
