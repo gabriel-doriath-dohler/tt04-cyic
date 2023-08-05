@@ -1,3 +1,5 @@
+`default_nettype none
+
 module mynot (
     input a,
     output y
