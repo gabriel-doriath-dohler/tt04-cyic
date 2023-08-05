@@ -17,7 +17,7 @@ module ring_oscillator#(
                     not (wi[i+1], wi[0]);
             end
             else if(i>= NO_STAGES) begin
-                    not #(INV_DELAY_ns) (wi[i+1], wi[i]);
+                    not (wi[i+1], wi[i]);
             end
             else begin
                     not (wi[i+1], wi[i]);
