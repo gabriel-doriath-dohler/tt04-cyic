@@ -1,5 +1,3 @@
-`include "ring_oscillator.v"
-
 module tt_um_sup3legacy_trng (
   input clk,
   input ena,
