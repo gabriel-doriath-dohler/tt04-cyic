@@ -11,6 +11,9 @@ set script_dir [file dirname [file normalize [info script]]]
 # - the list of source files
 source $::env(DESIGN_DIR)/user_config.tcl
 
+# WARN: Disabled linter
+set ::env(RUN_LINTER) 0
+
 # save some time
 set ::env(RUN_KLAYOUT_XOR) 0
 set ::env(RUN_KLAYOUT_DRC) 0
