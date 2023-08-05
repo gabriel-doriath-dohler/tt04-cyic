@@ -4,10 +4,11 @@ module ring_oscillator (
   wire n0;
   wire n1;
   wire n2;
-  wire n0;
+  wire n3;
   wire n4;
   wire n5;
   wire n6;
+
   assign n1 = ~n0;
   assign n2 = ~n1;
   assign n3 = ~n2;
