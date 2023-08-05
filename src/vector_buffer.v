@@ -6,11 +6,11 @@
 
 // TODO: Add #vectors parameter. Needs to be a power of 2 for right overflows
 module vector_buffer
-    #(parameter nb_vectors = 8)
+    #(parameter nb_vectors = 16)
 (
+    input clk,
     input bit,
     input bit_valid,
-    input clk,
 
     input req,
     output reg [7:0] vector,

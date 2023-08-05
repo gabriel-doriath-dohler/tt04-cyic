@@ -10,6 +10,14 @@ module tt_um_sup3legacy_trng (
 );
   reg enabled;
   wire random_bit;
+  wire bit_valid;
+
+  wire req;
+  wire [7:0] vector;
+  wire vector_valid;
+
+  assign bit_valid = enabled;
+  assign req = ui_in[0];
 
   initial begin
       enabled = 0;
@@ -20,8 +28,9 @@ module tt_um_sup3legacy_trng (
   end
 
   ring_oscillator oscillator (enabled, random_bit);
+  vector_buffer entropy_buffer (clk, random_bit, enabled, req, vector, vector_valid);
 
-  assign uo_out = {7'b0000000, random_bit};
+  assign uo_out = vector;
   assign uio_oe = 0;
   assign uio_out = 0;
 endmodule
