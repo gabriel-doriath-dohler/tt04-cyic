@@ -18,7 +18,7 @@ module vector_buffer
 );
   // The actual ring buffer
   // TODO: Size is #vectors
-  reg [7:0][nb_vectors - 1:0] buffer; 
+  reg [7:0] buffer[nb_vectors - 1:0]; 
 
   // Both consumer and producer indices
   // TODO: Size is log2(#vectors): [log2(#vectors)-1:0]
