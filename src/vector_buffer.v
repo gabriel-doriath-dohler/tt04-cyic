@@ -13,9 +13,8 @@ module vector_buffer
     input clk,
 
     input req,
-    output [7:0] vector,
-    output reg valid,
-
+    output reg [7:0] vector,
+    output reg valid
 );
   // The actual ring buffer
   // TODO: Size is #vectors
@@ -36,6 +35,8 @@ module vector_buffer
     prod = 0;
     fill = 0;
     is_empty = 1;
+    vector = 8'b0;
+    valid = 0;
   end
 
   always @(posedge clk) begin
@@ -50,7 +51,7 @@ module vector_buffer
             fill = fill + 1;
             // We have completed a vector
             if (fill == 0)
-              prod = prof + 1;
+              prod = prod + 1;
         end
     end
   end
