@@ -24,11 +24,11 @@ module ring_oscillator (
   //assign n6 = !n5;
   //assign n0 = !n6;
 
-  mynot (n1, n0);
-  mynot (n2, n1);
-  mynot (n3, n2);
-  mynot (n4, n3);
-  mynot (n5, n4);
+  mynot not0 (n1, n0);
+  mynot not1 (n2, n1);
+  mynot not2 (n3, n2);
+  mynot not3 (n4, n3);
+  mynot not4 (n5, n4);
 
   assign n0 = enable ? n5 : 0;
 
