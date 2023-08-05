@@ -17,6 +17,7 @@ module tt_um_sup3legacy_trng (
   wire vector_valid;
 
   assign bit_valid = enabled;
+  // TODO: Wire to `ena`
   assign req = ui_in[0];
 
   initial begin

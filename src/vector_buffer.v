@@ -9,7 +9,7 @@ module vector_buffer
     #(parameter nb_vectors = 16)
 (
     input clk,
-    input bit,
+    input input_bit,
     input bit_valid,
 
     input req,
@@ -47,7 +47,7 @@ module vector_buffer
             // We can store it
 
             // Shift the vector and append the input bit
-            buffer[prod] = (buffer[prod] << 1) | {7'b0000000, bit}; 
+            buffer[prod] = (buffer[prod] << 1) | {7'b0000000, input_bit}; 
             fill = fill + 1;
             // We have completed a vector
             if (fill == 0)
