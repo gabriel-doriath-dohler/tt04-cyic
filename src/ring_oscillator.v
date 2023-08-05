@@ -1,5 +1,5 @@
 module ring_oscillator (
-    output bit
+    output entropy_bit
 );
   wire n0;
   wire n1;
@@ -17,5 +17,5 @@ module ring_oscillator (
   assign n6 = ~n5;
   assign n0 = ~n6;
 
-  assign bit = n0;
+  assign entropy_bit = n0;
 endmodule
