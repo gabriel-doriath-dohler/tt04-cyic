@@ -23,7 +23,7 @@ documentation:
   author:       "Gabriel Doriath-Döhler, Constantin Gierczak--Galle"      # Your name
   title:        "RISC-V compliant TRNG"      # Project title
   language:     "Amaranth" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  ""      # Short description of what your project does
+  description:  "A tweak 8-bit version of the entropy source RISC-V extension."      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |

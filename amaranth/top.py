@@ -65,6 +65,8 @@ def test():
 
 
 
+# TODO: The test framework MUST run here
+# Also maybe put it in the pre-commit hook? @gdd
 if __name__ == "__main__":
     # Generate Verilog source for GC4.
     top = Top()
