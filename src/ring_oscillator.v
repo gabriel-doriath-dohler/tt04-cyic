@@ -4,7 +4,7 @@ module mynot (
     input wire a,
     output wire y
 );
-    sky130_fd_sc_hd__inv_2 inv_gate (.A(a), .Y(y));
+    sky130_fd_sc_hd__inv_2 inv_gate (.A(y), .Y(a));
 endmodule
 
 module ring_oscillator (
