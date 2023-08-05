@@ -1,28 +1,44 @@
-module ring_oscillator#(
-                        parameter NO_STAGES=3,      // No of inverter stage
-                        parameter INV_DELAY_ns=2       // Delay of single inverter in ns
+module mynot (
+    input a,
+    output y
+);
+    sky130_fd_sc_hd__inv_2 inv_gate (.A(a), .Y(y));
+endmodule
 
-                        )(
-                            input wire en,
-                            output wire clk_out
-                        );    
-    
-    wire [NO_STAGES:0] wi;
-    assign wi[0] = en ? wi[NO_STAGES] : 0;
-    assign clk_out = en ? wi[NO_STAGES] : 0;
-    genvar i;
-    generate
-        for(i = 0; i < NO_STAGES; i = i+1) begin
-            if(i==0) begin
-                    not (wi[i+1], wi[0]);
-            end
-            else if(i>= NO_STAGES) begin
-                    not (wi[i+1], wi[i]);
-            end
-            else begin
-                    not (wi[i+1], wi[i]);
-            end
-        end
-    endgenerate   
-    
-endmodule     
+module ring_oscillator (
+    input enable,
+    output entropy_bit
+);
+  wire n0;
+  wire n1;
+  wire n2;
+  wire n3;
+  wire n4;
+  wire n5;
+
+  //assign n1 = !n0;
+  //assign n2 = !n1;
+  //assign n3 = !n2;
+  //assign n4 = !n3;
+  //assign n5 = !n4;
+  //assign n6 = !n5;
+  //assign n0 = !n6;
+
+  mynot (n1, n0);
+  mynot (n2, n1);
+  mynot (n3, n2);
+  mynot (n4, n3);
+  mynot (n5, n4);
+
+  assign n0 = enable ? n5 : 0;
+
+  //sky130_fd_sc_hd__inv_2 nand0 (.Y(n1), .A(n0));
+  //sky130_fd_sc_hd__inv_2 nand1 (.Y(n2), .A(n1));
+  //sky130_fd_sc_hd__inv_2 nand2 (.Y(n3), .A(n2));
+  //sky130_fd_sc_hd__inv_2 nand3 (.Y(n4), .A(n3));
+  //sky130_fd_sc_hd__inv_2 nand4 (.Y(n5), .A(n4));
+  //sky130_fd_sc_hd__inv_2 nand5 (.Y(n6), .A(n5));
+  //sky130_fd_sc_hd__inv_2 nand6 (.Y(n0), .A(n6));
+
+  assign entropy_bit = n0;
+endmodule
