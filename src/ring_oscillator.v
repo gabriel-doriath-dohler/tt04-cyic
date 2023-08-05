@@ -23,8 +23,9 @@ module ring_oscillator (
       enabled = 0;
   end
 
-  always @ (posedge enable)
+  always @ (posedge enable) begin
       enabled = 1;
+  end
 
   //sky130_fd_sc_hd__inv_2 nand0 (.Y(n1), .A(n0));
   //sky130_fd_sc_hd__inv_2 nand1 (.Y(n2), .A(n1));

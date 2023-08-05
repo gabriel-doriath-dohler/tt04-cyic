@@ -8,9 +8,18 @@ module tt_um_sup3legacy_trng (
   output [7:0] uio_out,
   output [7:0] uo_out
 );
+  reg enabled;
   wire random_bit;
 
-  ring_oscillator oscillator (random_bit);
+  initial begin
+      enabled = 0;
+  end
+
+  always @ (posedge clk) begin
+      enabled = 1;
+  end
+
+  ring_oscillator oscillator (enabled, random_bit);
 
   assign uo_out = {7'b0000000, random_bit};
   assign uio_oe = 0;
