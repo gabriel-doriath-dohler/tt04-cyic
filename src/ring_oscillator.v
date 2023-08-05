@@ -1,8 +1,8 @@
 `default_nettype none
 
 module mynot (
-    input a,
-    output y
+    input wire a,
+    output wire y
 );
     sky130_fd_sc_hd__inv_2 inv_gate (.A(a), .Y(y));
 endmodule
