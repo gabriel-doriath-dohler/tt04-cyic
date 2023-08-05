@@ -12,10 +12,11 @@ module tt_um_sup3legacy_trng (
   );
   wire random_bit;
 
-  ring_oscillator oscillator(
-    .entropy_bit (random_bit),
-  );
+  //ring_oscillator oscillator(
+  //  .entropy_bit (random_bit),
+  //);
 
+  assign rnadom_bit = 0;
   assign uo_out = {7'b0000000, random_bit};
   assign uio_oe = 0;
   assign uio_out = 0;
