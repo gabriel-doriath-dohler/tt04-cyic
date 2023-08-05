@@ -14,7 +14,7 @@ module example_tb ();
 
   vector_buffer buffer (
     .clk (clk),
-    .bit (bit),
+    .input_bit (bit),
     .bit_valid (bit_valid),
     .req (req),
     .vector (vector),
