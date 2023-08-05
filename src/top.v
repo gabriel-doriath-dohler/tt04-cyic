@@ -7,7 +7,7 @@ module tt_um_sup3legacy_trng (
   input [7:0] uio_oe,
   output [7:0] uio_out,
   output [7:0] uo_out
-  );
+);
   wire random_bit;
 
   //ring_oscillator oscillator(
