@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # Generate Verilog source for GC4.
     top = Top()
     v = verilog.convert(
-        top, name="sup3legacy_trng", ports=[top.ui_in, top.uo_out, top.uio_in,
+        top, name="tt_sup3legacy_trng", ports=[top.ui_in, top.uo_out, top.uio_in,
                                             top.uio_out, top.uio_oe, top.clk,
                                             top.ena, top.rst_n],
         emit_src=False, strip_internal_attrs=True)
