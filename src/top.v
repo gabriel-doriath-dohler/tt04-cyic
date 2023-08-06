@@ -9,6 +9,7 @@ module tt_um_sup3legacy_trng (
   output [7:0] uo_out
 );
   reg enabled;
+  wire ring_valid;
   wire random_bit;
   wire bit_valid;
 
@@ -28,7 +29,8 @@ module tt_um_sup3legacy_trng (
       enabled = 1;
   end
 
-  ring_oscillator oscillator (enabled, random_bit);
+  // TODO: instantiate all 4 RNGs and put them behind a mux4
+  ring_oscillator oscillator (enabled, ring_valid, random_bit);
   vector_buffer entropy_buffer (clk, random_bit, enabled, req, vector, vector_valid);
 
   assign uo_out = vector;

@@ -9,6 +9,7 @@ endmodule
 
 module ring_oscillator (
     input enable,
+    output entropy_valid,
     output entropy_bit
 );
   wire n0;
@@ -42,5 +43,6 @@ module ring_oscillator (
   //sky130_fd_sc_hd__inv_2 nand5 (.Y(n6), .A(n5));
   //sky130_fd_sc_hd__inv_2 nand6 (.Y(n0), .A(n6));
 
+  assign entripy_valid = 1;
   assign entropy_bit = n0;
 endmodule
