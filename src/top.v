@@ -17,6 +17,22 @@ module tt_um_sup3legacy_trng (
   wire [7:0] vector;
   wire vector_valid;
 
+  wire user_entropy;
+  wire [1:0] entropy_selector;
+  wire bist_enabled;
+
+  wire [1:0] wrapper_state;
+
+  // Inputs
+  assign user_rentropy = ui_in[0];
+  assign entropy_selector = ui_in[2:1];
+  assign bist_enabled = ui_in[3];
+
+  // Outputs
+  assign uo_out = vector;
+  assign uio_oe = 8'b00000000;
+  assign uio_out = {6'b0, wrapper_state};
+
   assign bit_valid = enabled;
   // TODO: Wire to `ena`
   assign req = ui_in[0];
@@ -33,7 +49,4 @@ module tt_um_sup3legacy_trng (
   ring_oscillator oscillator (enabled, ring_valid, random_bit);
   vector_buffer entropy_buffer (clk, random_bit, enabled, req, vector, vector_valid);
 
-  assign uo_out = vector;
-  assign uio_oe = 0;
-  assign uio_out = 0;
 endmodule
