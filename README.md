@@ -1,5 +1,16 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg)
 
+# WIP
+
+To simulate the entropy vector buffer:
+
+```bash
+cd src
+iverilog tb_vector_buffer.v
+vvp a.out
+gtkwave tb_entropy_buffer.gtkw
+```
+
 # What is Tiny Tapeout?
 
 TinyTapeout is an educational project that aims to make it easier and cheaper than ever to get your digital designs manufactured on a real chip!

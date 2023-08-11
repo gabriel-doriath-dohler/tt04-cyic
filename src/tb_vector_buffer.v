@@ -23,7 +23,7 @@ module example_tb ();
 
   // generate the clock
     always #1 clk = ~clk;
-    always #3 bit = ~bit;
+    always #1 bit = $random;
   initial begin
     $dumpfile ("vector_buffer.vcd");
     $dumpvars (vector);

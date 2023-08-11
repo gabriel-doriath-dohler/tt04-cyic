@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Fri Aug 11 11:27:29 2023
+[*]
+[dumpfile] "/home/cst1/Documents/Projets/tt04-cyic/src/vector_buffer.vcd"
+[dumpfile_mtime] "Fri Aug 11 11:24:02 2023"
+[dumpfile_size] 8217
+[savefile] "/home/cst1/Documents/Projets/tt04-cyic/src/tb_entropy_buffer.gtkw"
+[timestart] 183290
+[size] 1364 640
+[pos] -24 -16
+*-14.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] example_tb.
+[sst_width] 273
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 176
+@28
+example_tb.bit
+example_tb.bit_valid
+example_tb.clk
+example_tb.req
+@22
+example_tb.vector[7:0]
+@28
+example_tb.vector_valid
+@24
+example_tb.buffer.fill[2:0]
+example_tb.buffer.prod[2:0]
+@25
+example_tb.buffer.cons[2:0]
+[pattern_trace] 1
+[pattern_trace] 0

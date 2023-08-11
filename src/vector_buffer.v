@@ -40,39 +40,34 @@ module vector_buffer
   end
 
   always @(posedge clk) begin
-    // TODO; 
-    if (bit_valid) begin
-        // An input bit is present
-        if ((cons != prod) || is_empty) begin
-            // We can store it
-
-            // Shift the vector and append the input bit
-            buffer[prod] = (buffer[prod] << 1) | {7'b0000000, input_bit}; 
-            fill = fill + 1;
-            // We have completed a vector
-            if (fill == 0)
-              prod = prod + 1;
-        end
+    // Prod
+    if (bit_valid && ((cons != prod) || is_empty)) begin
+      // Shift the vector and append the input bit
+      buffer[prod] = (buffer[prod] << 1) | {7'b0000000, input_bit}; 
+      fill = fill + 1;
+      // We have completed a vector
+      if (fill == 0) begin
+        prod = prod + 1;
+        is_empty = 0;
+      end
     end
-  end
-
-  always @(posedge clk) begin
+    // Cons
     if (req) begin
-        if (!is_empty) begin
-            vector = buffer[cons]; 
-            valid = 1;
-            cons = cons + 1;
-        end
-        else begin
-            vector = 0;
-            valid = 0;
-        end
-        // Have we emptied the ring buffer?
-        is_empty = (cons == prod);
-    end
-    else begin
+      if (!is_empty) begin
+        vector = buffer[cons]; 
+        valid = 1;
+        cons = cons + 1;
+      end
+      else begin
         vector = 0;
         valid = 0;
+      end
+      // Have we emptied the ring buffer?
+      is_empty = (cons == prod);
+    end
+    else begin
+      vector = 0;
+      valid = 0;
     end
   end
 endmodule
