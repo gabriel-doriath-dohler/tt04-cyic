@@ -25,6 +25,8 @@ module tt_um_sup3legacy_trng (
 
   // Inputs
   assign user_rentropy = ui_in[0];
+  // WARN: do not forget to invalidate some modules after this value changes
+  // e.g. the Von Neumann unbiaser
   assign entropy_selector = ui_in[2:1];
   assign bist_enabled = ui_in[3];
 

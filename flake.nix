@@ -15,6 +15,7 @@
         devShell = pkgs.mkShell {
           nativeBuildInputs = [
             pkgs.gtkwave
+            pkgs.verilog
             (pkgs.python311.withPackages (ps: with ps; [
               amaranth
               amaranth-boards
