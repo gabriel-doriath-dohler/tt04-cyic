@@ -17,6 +17,9 @@ module tt_um_sup3legacy_trng (
   wire [7:0] vector;
   wire vector_valid;
 
+  wire vn_valid;
+  wire vn_bit;
+
   wire user_entropy;
   wire [1:0] entropy_selector;
   wire bist_enabled;
@@ -29,11 +32,15 @@ module tt_um_sup3legacy_trng (
   // e.g. the Von Neumann unbiaser
   assign entropy_selector = ui_in[2:1];
   assign bist_enabled = ui_in[3];
+  assign vn_enable = ui_in[4];
 
   // Outputs
   assign uo_out = vector;
   assign uio_oe = 8'b00000000;
   assign uio_out = {6'b0, wrapper_state};
+
+  // Temp
+  assign wrapper_state = 2'b10;
 
   assign bit_valid = enabled;
   // TODO: Wire to `ena`
@@ -49,6 +56,8 @@ module tt_um_sup3legacy_trng (
 
   // TODO: instantiate all 4 RNGs and put them behind a mux4
   ring_oscillator oscillator (enabled, ring_valid, random_bit);
-  vector_buffer entropy_buffer (clk, random_bit, enabled, req, vector, vector_valid);
+  // FIXME: rst_n should be ORed with the change vector of entropy_selector
+  vn_unbiaser_wrapper (clk, rst_n, vn_enable, ring_valid, random_bit, vn_valid, vn_bit);
+  vector_buffer entropy_buffer (clk, vn_bit, vn_valid, req, vector, vector_valid);
 
 endmodule
