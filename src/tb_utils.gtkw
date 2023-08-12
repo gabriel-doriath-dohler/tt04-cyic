@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sat Aug 12 09:48:37 2023
+[*]
+[dumpfile] "/home/cst1/Documents/Projets/tt04-cyic/src/utils.vcd"
+[dumpfile_mtime] "Sat Aug 12 09:48:14 2023"
+[dumpfile_size] 1065
+[savefile] "/home/cst1/Documents/Projets/tt04-cyic/src/tb_utils.gtkw"
+[timestart] 0
+[size] 1364 640
+[pos] -24 -16
+*-12.000000 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] utils_tb.
+[sst_width] 273
+[signals_width] 150
+[sst_expanded] 1
+[sst_vpaned_height] 176
+@28
+utils_tb.cd.change_out
+utils_tb.cd.clk
+utils_tb.cd.last_value[1:0]
+utils_tb.cd.sel_in[1:0]
+[pattern_trace] 1
+[pattern_trace] 0
