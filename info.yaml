@@ -1,15 +1,18 @@
---- 
+---
 # TinyTapeout project information
 project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
 
-# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
 # Source files must be in ./src and you must list each source file separately
-  source_files:        
+  source_files:
     - top.v
     - ring_oscillator.v
     - vector_buffer.v
     - vn_unbiaser.v
+    - utils.v
+    - mock_rngs.v
+    - bist.v
   top_module:  "tt_um_sup3legacy_trng"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
@@ -22,7 +25,7 @@ yaml_version: 4
 # it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
-documentation: 
+documentation:
   author:       "Gabriel Doriath Döhler, Constantin Gierczak--Galle"      # Your name
   title:        "RISC-V compliant TRNG"      # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
@@ -38,7 +41,7 @@ documentation:
 
 # TODO:
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
-  inputs:               
+  inputs:
     - none
     - none
     - none
